@@ -1,7 +1,7 @@
 // PISO : Parallel In Serial Out 
 
 module PISO #(parameter piso_width=9)
-( input clk,shift,start,load
+( input clk,shift,start,load,
   input [piso_width-1:0]in,
   output out);
 
@@ -20,6 +20,7 @@ module PISO #(parameter piso_width=9)
 	begin
 	out_r <= in_r[0];
 	in_r <= {1'b0,in_r[piso_width-1:1]};
+	end
 	else
 	out_r <= out_r;
  end

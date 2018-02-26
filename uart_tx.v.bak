@@ -1,60 +1,28 @@
 // Transmitter module for UART
 
-// State Machine for Transmitter Module of UART
+module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4)
+(input [data_bits-1:0]DBUS,
+ input sysclk,rst_n,bclk,txd_startH,
+ output txd,txd_doneH);
 
-module sm_tx #(parameter data_bits=8)
-(input bclk,rst_n,txd_startH,
- input [3:0]bct,
- output reg txd_done,start,shftTSR,loadTSR,clr,inc);
+ reg shftTSR,loadTSR,start;
+ reg clr,inc;
+ reg [transmitted_bit_counter_bits-1:0]bct;
+ reg txd_done,bclk_dlayed;
+ wire bclk_rising;
 
- parameter idle=2'b00;
- parameter synch=2'b01;
- parameter tdata=2'b10;
+ dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclk),.q(bclk_dlayed));
  
- reg [1:0]pr_state,nxt_state;
+ and and_gate (bclk_rising,bclk,~(bclk_dlayed));
+ 
+ sm_rx #(.data_bits(data_bits)) state_machine (.bclk(bclk_rising),.rst_n(rst_n),.txd_startH(txd_startH),.bct(bct),
+ 						.txd_done(txd_done),.start(start),.shftTSR(shftTSR),.loadTSR(loadTSR),
+						.clr(clr),.inc(inc));
 
-always @ (posedge bclk, negedge rst_n)
-begin
-	if(!rst_n)
-	begin
-	pr_state <= idle;
-	end
-	else
-	pr_state <= nxt_state;
-end
+ counter_nbit #(.n(transmitted_bit_counter_bits)) transmitted_bit_counter (.clk(sysclk),.clear(clr),.inc(inc),.out(bct));
 
-always @ (pr_state,txd_startH)
-begin
-	case(pr_state)
-	idle:   if(txd_startH)
-		begin
-			{txd_done,clr,inc}={1'b0,1'b1,1'b0};
-			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b1};
-			//loadTSR = 1'b1;
-			nxt_state = synch;
-		end
-		else
-		begin
-			nxt_state = idle;
-		end
-	synch:  {txd_done,clr,inc}={1'b0,1'b1,1'b0};
-		{start,shftTSR,loadTSR}={1'b1,1'b0,1'b0};
-		//start = 1'b1;
-		nxt_state = tdata;
-	tdata:  if(bct == (data_bits+1))
-		begin
-			{txd_done,clr,inc}={1'b1,1'b1,1'b0};
-			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b0};
-			//{txd_done,clr} = {1'b1,1'b1};
-			nxt_state = idle;
-		end
-		else
-		begin
-			{txd_done,clr,inc}={1'b0,1'b0,1'b1};
-			{start,shftTSR,loadTSR}={1'b0,1'b1,1'b0};
-			//{shftTSR,inc}={1'b1,1'b1};
-			nxt_state = tdata;
-		end
-	endcase
-end
+ PISO #(.piso_width(data_bits)) data_shift_register (.clk(sysclk),.shift(shftTSR),.start(start),.load(loadTSR),.in(DBUS),.out(TSR));
+
+ dff DFF2 (.clk(sysclk),.rst_n(rst_n),.in(txd_done),.q(txd_doneH));
+
 endmodule
