@@ -1,0 +1,132 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dR:/intelFPGA/16.1/Verilog/fork_join
+vdff
+!s110 1519499710
+!i10b 1
+!s100 Ya_`BB_A0P`CWc?FjHGiM1
+IXaOU_ccGS_4c[4>cdULQI0
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dR:/intelFPGA/16.1/Verilog/UART
+w1519499703
+8dff.v
+Fdff.v
+L0 3
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1519499709.000000
+!s107 dff.v|
+!s90 -reportprogress|300|dff.v|
+!i113 1
+Z3 tCvgOpt 0
+vmux8to1
+!s110 1519499377
+!i10b 1
+!s100 =;_IiHYT<[l4mDG`JX<_z3
+I>RhCc`48nJRoDC0jTYImM3
+R0
+R1
+w1519499373
+8mux8to1.v
+Fmux8to1.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1519499377.000000
+!s107 mux8to1.v|
+!s90 -reportprogress|300|mux8to1.v|
+!i113 1
+R3
+vPIPO
+!s110 1519543027
+!i10b 1
+!s100 W83DWaPfX1OAm]P>V7mEi1
+Ii9GFAUz6j^7i7PYfVcU1a0
+R0
+R1
+w1519507797
+8PIPO.v
+FPIPO.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1519543027.000000
+!s107 PIPO.v|
+!s90 -reportprogress|300|PIPO.v|
+!i113 1
+R3
+n@p@i@p@o
+vSIPO
+!s110 1519504800
+!i10b 1
+!s100 oZa86JmiR4;gH7k?2]8fK2
+IL?CQ2IT;MFKWo2EYoeeb63
+R0
+R1
+w1519504797
+8SIPO.v
+FSIPO.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1519504799.000000
+!s107 SIPO.v|
+!s90 -reportprogress|300|SIPO.v|
+!i113 1
+R3
+n@s@i@p@o
+vsm_rx
+!s110 1519580832
+!i10b 1
+!s100 j:cQkaTWzb2zGjaY3JaLk0
+IBT[1m6e<fRWWf0fLG6?V52
+R0
+R1
+w1519569916
+8sm_rx.v
+Fsm_rx.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1519580831.000000
+!s107 sm_rx.v|
+!s90 -reportprogress|300|sm_rx.v|
+!i113 1
+R3
+vsm_tx
+!s110 1519590997
+!i10b 1
+!s100 d_0f<><E0>h[UIREm]B;?3
+I>R9TTZ<;8OnbVMHJ1A_5<2
+R0
+R1
+w1519590994
+8sm_tx.v
+Fsm_tx.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1519590997.000000
+!s107 sm_tx.v|
+!s90 -reportprogress|300|sm_tx.v|
+!i113 1
+R3
