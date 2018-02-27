@@ -8,206 +8,227 @@ z2
 !i10f 100
 cModel Technology
 dR:/intelFPGA/16.1/Verilog/fork_join
+vBRG
+!s110 1519754698
+!i10b 1
+!s100 TK6[jdPQ7m4W6Lz47<N]W0
+IdKVV:N<=^o4T8hZYT1QdD2
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dR:/intelFPGA/16.1/Verilog/UART
+w1519753231
+8BRG.v
+FBRG.v
+L0 9
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z3 !s108 1519754698.000000
+Z4 !s107 uart_tx.v|uart_rx.v|sm_tx.v|sm_rx.v|mux8to1.v|dff.v|counter_nbit.v|SIPO.v|PISO.v|PIPO.v|BRG.v|
+Z5 !s90 -reportprogress|300|BRG.v|PIPO.v|PISO.v|SIPO.v|counter_nbit.v|dff.v|mux8to1.v|sm_rx.v|sm_tx.v|uart_rx.v|uart_tx.v|
+!i113 1
+Z6 tCvgOpt 0
+n@b@r@g
 vcounter_nbit
-Z0 !s110 1519665937
+Z7 !s110 1519754699
 !i10b 1
 !s100 LGMH@IoiA2`ZhQ6LCR6Yl1
 I8I9d]<Hl_BIgoagHOi8IZ2
-Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dR:/intelFPGA/16.1/Verilog/UART
+R0
+R1
 w1519545260
 8counter_nbit.v
 Fcounter_nbit.v
 L0 3
-Z3 OV;L;10.5b;63
+R2
 r1
 !s85 0
 31
-Z4 !s108 1519665937.000000
-Z5 !s107 uart_tx.v|uart_rx.v|sm_tx.v|sm_rx.v|mux8to1.v|dff.v|counter_nbit.v|SIPO.v|PISO.v|PIPO.v|
-Z6 !s90 -reportprogress|300|PIPO.v|PISO.v|SIPO.v|counter_nbit.v|dff.v|mux8to1.v|sm_rx.v|sm_tx.v|uart_rx.v|uart_tx.v|
+R3
+R4
+R5
 !i113 1
-Z7 tCvgOpt 0
+R6
 vdff
-R0
+R7
 !i10b 1
 !s100 Ya_`BB_A0P`CWc?FjHGiM1
 IXaOU_ccGS_4c[4>cdULQI0
+R0
 R1
-R2
 w1519499703
 8dff.v
 Fdff.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 vmux8to1
-R0
+R7
 !i10b 1
 !s100 =;_IiHYT<[l4mDG`JX<_z3
 I>RhCc`48nJRoDC0jTYImM3
+R0
 R1
-R2
 w1519499373
 8mux8to1.v
 Fmux8to1.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 vPIPO
-R0
+R7
 !i10b 1
 !s100 W83DWaPfX1OAm]P>V7mEi1
 Ii9GFAUz6j^7i7PYfVcU1a0
+R0
 R1
-R2
 w1519507797
 8PIPO.v
 FPIPO.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 n@p@i@p@o
 vPISO
-R0
+R7
 !i10b 1
 !s100 =aJJ>a>nGGoG4Ufbg7oBL1
 IHAP=6<I<jF2bnzobic=LB3
+R0
 R1
-R2
 w1519662696
 8PISO.v
 FPISO.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 n@p@i@s@o
 vSIPO
-R0
+R7
 !i10b 1
 !s100 ch<ZTQAM:oz[Pb1M@gM5X3
 Ie^=TdL=;ccbFb]cBPUEB?1
+R0
 R1
-R2
 w1519506013
 8SIPO.v
 FSIPO.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 n@s@i@p@o
 vsm_rx
-R0
+R7
 !i10b 1
 !s100 j:cQkaTWzb2zGjaY3JaLk0
 IBT[1m6e<fRWWf0fLG6?V52
+R0
 R1
-R2
 w1519569916
 8sm_rx.v
 Fsm_rx.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 vsm_tx
-Z8 !s110 1519665938
+R7
 !i10b 1
 !s100 d_0f<><E0>h[UIREm]B;?3
 I>R9TTZ<;8OnbVMHJ1A_5<2
+R0
 R1
-R2
 w1519590994
 8sm_tx.v
 Fsm_tx.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 vuart_rx
-R8
+R7
 !i10b 1
 !s100 8J0^EfYXIP2Tf7RnI<:e_0
 IVP_?ARBbfcgBMWZDLZU>_0
+R0
 R1
-R2
 w1519661363
 8uart_rx.v
 Fuart_rx.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
 vuart_tx
-R8
+R7
 !i10b 1
 !s100 oMXJ:V3C9B7P_X_Ik;_eO0
 IZH`[;2MPbHn:Q4cV>3<N]1
+R0
 R1
-R2
 w1519665926
 8uart_tx.v
 Fuart_tx.v
 L0 3
-R3
+R2
 r1
 !s85 0
 31
+R3
 R4
 R5
-R6
 !i113 1
-R7
+R6
