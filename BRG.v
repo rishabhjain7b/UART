@@ -6,9 +6,9 @@
 `define C_samples 8
 `define divisor 3
 
-module BRG
+module BRG #(parameter sel=3'b000)
 (input fclk,
- input [2:0]sel,
+ //input [2:0]sel,
  output bclk,bclkx8);
 
 reg clkdiv;

@@ -1,6 +1,8 @@
 // Baud Rate Generator for UART IP
 
-`define BRmax 38400
+// divisor = (fclk/(BRmax*C_samples*2))
+//`define BRmax 38400
+
 `define C_samples 8
 `define divisor 3
 
@@ -29,6 +31,6 @@ begin
 	3'b110: bclkx8_r = clkdiv >> 7;
 	3'b111: bclkx8_r = clkdiv >> 8;
 	endcase
-	bclk_r = bclkx8_r/C_samples;
+	bclk_r = bclkx8_r/`C_samples;
 end
 endmodule

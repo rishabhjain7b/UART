@@ -9,7 +9,8 @@ module uart_rx #(parameter data_bits=8, parameter received_bit_counter_bits=3, p
  reg clr1,inc1,clr2,inc2;
  reg [received_bit_counter_bits-1:0]ct1;
  reg [bit_cell_counter_bits-1:0]ct2;
- reg bclkx8_dlayed,bclkx8_rising;
+ reg bclkx8_dlayed;
+ wire bclkx8_rising;
 
  dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclkx8),.q(bclkx8_dlayed));
  

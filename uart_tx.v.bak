@@ -15,7 +15,7 @@ module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4
  
  and and_gate (bclk_rising,bclk,~(bclk_dlayed));
  
- sm_rx #(.data_bits(data_bits)) state_machine (.bclk(bclk_rising),.rst_n(rst_n),.txd_startH(txd_startH),.bct(bct),
+ sm_tx #(.data_bits(data_bits)) state_machine (.bclk(bclk_rising),.rst_n(rst_n),.txd_startH(txd_startH),.bct(bct),
  						.txd_done(txd_done),.start(start),.shftTSR(shftTSR),.loadTSR(loadTSR),
 						.clr(clr),.inc(inc));
 
