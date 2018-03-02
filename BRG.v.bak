@@ -22,7 +22,7 @@ counter_8bit #(.limit(8'd1<<(sel+1))) eight_bits_counter (.clkdiv(clkdiv),.out(b
 
 counter_8bit #(.limit(`C_samples)) divide_by_C_reg (.clkdiv(bclkx8),.out(bclk_r));
 
-counter_8bit #(.limit(`8'd1<<(sel+1))) divide_by_C (.clkdiv(bclk_r),.out(bclk));
+counter_8bit #(.limit(8'd1<<(sel+1))) divide_by_C (.clkdiv(bclk_r),.out(bclk));
 
 always @ (posedge fclk)
 begin

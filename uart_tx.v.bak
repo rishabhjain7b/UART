@@ -1,15 +1,18 @@
 // Transmitter module for UART
 
-module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4)
+module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4, parameter br=3'b000)
 (input [data_bits-1:0]DBUS,
- input sysclk,rst_n,bclk,txd_startH,
+ input sysclk,rst_n,txd_startH,
  output txd,txd_doneH);
 
+ reg bclk;
  reg shftTSR,loadTSR,start;
  reg clr,inc;
  reg [transmitted_bit_counter_bits-1:0]bct;
  reg txd_done,bclk_dlayed;
  wire bclk_rising;
+
+  BRG #(.sel(br)) baud_rate_generator (.fclk(sysclk),.bclkx8(),.bclk(bclk));
 
  dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclk),.q(bclk_dlayed));
  

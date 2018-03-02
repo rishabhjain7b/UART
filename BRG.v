@@ -4,7 +4,7 @@
 //`define BRmax 38400
 
 `define C_samples 4 //2**3=8
-`define divisor 2
+`define divisor 3
 
 module BRG #(parameter sel=3'b000)
 (input fclk,
@@ -26,7 +26,7 @@ counter_8bit #(.limit(8'd1<<(sel+1))) divide_by_C (.clkdiv(bclk_r),.out(bclk));
 
 always @ (posedge fclk)
 begin
-	if (q == `divisor)
+	if (q == (`divisor-1))
 	begin
 		q <= 2'd0;
 		clkdiv <= 1'b0;
