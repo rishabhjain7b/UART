@@ -1,6 +1,6 @@
 // State Machine for Transmitter Module of UART
 
-module sm_tx #(parameter data_bits=8)
+module sm_tx #(parameter data_bits=4'd8)
 (input bclk,rst_n,txd_startH,
  input [3:0]bct,
  output reg txd_done,start,shftTSR,loadTSR,clr,inc);

@@ -9,7 +9,7 @@ z2
 cModel Technology
 dR:/intelFPGA/16.1/Verilog/fork_join
 vBRG
-Z0 !s110 1519928645
+Z0 !s110 1520262055
 !i10b 1
 !s100 7^ahV7hU:z1lQL2b0?8<R0
 I6jX>mnXiQBGJS_DFBBhY53
@@ -23,14 +23,14 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1519928645.000000
-Z5 !s107 uart_tx_tb.v|BRG.v|uart_tx.v|
-Z6 !s90 -reportprogress|300|uart_tx.v|BRG.v|uart_tx_tb.v|
+Z4 !s108 1520262055.000000
+Z5 !s107 uart_tx_tb.v|uart_tx.v|uart_rx.v|sm_tx.v|sm_rx.v|dff.v|counter_nbit.v|counter_8bit.v|SIPO.v|PISO.v|PIPO.v|BRG_tb.v|BRG.v|
+Z6 !s90 -reportprogress|300|BRG.v|BRG_tb.v|PIPO.v|PISO.v|SIPO.v|counter_8bit.v|counter_nbit.v|dff.v|sm_rx.v|sm_tx.v|uart_rx.v|uart_tx.v|uart_tx_tb.v|
 !i113 1
 Z7 tCvgOpt 0
 n@b@r@g
 vBRG_tb
-Z8 !s110 1519900033
+R0
 !i10b 1
 !s100 3iGg12OKT?mWimFf^4cE=1
 IPK]zZi<2K6olgO5gOC1@f1
@@ -44,14 +44,14 @@ R3
 r1
 !s85 0
 31
-Z9 !s108 1519900032.000000
-Z10 !s107 uart_tx_tb.v|uart_tx.v|uart_rx.v|sm_tx.v|sm_rx.v|dff.v|counter_nbit.v|counter_8bit.v|SIPO.v|PISO.v|PIPO.v|BRG_tb.v|BRG.v|
-Z11 !s90 -reportprogress|300|BRG.v|BRG_tb.v|PIPO.v|PISO.v|SIPO.v|counter_8bit.v|counter_nbit.v|dff.v|sm_rx.v|sm_tx.v|uart_rx.v|uart_tx.v|uart_tx_tb.v|
+R4
+R5
+R6
 !i113 1
 R7
 n@b@r@g_tb
 vcounter_8bit
-R8
+R0
 !i10b 1
 !s100 O4<`[b]cn7d?z_4:2V4j63
 IY`YNJbFNoBQoVD1HzKMT@0
@@ -65,13 +65,13 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vcounter_nbit
-R8
+R0
 !i10b 1
 !s100 LGMH@IoiA2`ZhQ6LCR6Yl1
 I8I9d]<Hl_BIgoagHOi8IZ2
@@ -85,13 +85,13 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vdff
-R8
+R0
 !i10b 1
 !s100 Ya_`BB_A0P`CWc?FjHGiM1
 IXaOU_ccGS_4c[4>cdULQI0
@@ -105,9 +105,9 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vmux8to1
@@ -131,7 +131,7 @@ r1
 !i113 1
 R7
 vPIPO
-R8
+R0
 !i10b 1
 !s100 W83DWaPfX1OAm]P>V7mEi1
 Ii9GFAUz6j^7i7PYfVcU1a0
@@ -145,14 +145,14 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 n@p@i@p@o
 vPISO
-R8
+R0
 !i10b 1
 !s100 =aJJ>a>nGGoG4Ufbg7oBL1
 IHAP=6<I<jF2bnzobic=LB3
@@ -166,14 +166,14 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 n@p@i@s@o
 vSIPO
-R8
+R0
 !i10b 1
 !s100 ch<ZTQAM:oz[Pb1M@gM5X3
 Ie^=TdL=;ccbFb]cBPUEB?1
@@ -187,14 +187,14 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 n@s@i@p@o
 vsm_rx
-R8
+R0
 !i10b 1
 !s100 j:cQkaTWzb2zGjaY3JaLk0
 IBT[1m6e<fRWWf0fLG6?V52
@@ -208,19 +208,19 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vsm_tx
-R8
+R0
 !i10b 1
-!s100 d_0f<><E0>h[UIREm]B;?3
-I>R9TTZ<;8OnbVMHJ1A_5<2
+!s100 h<fA;Y[lHdST`YhN0m_6f0
+IgWVYldFk=kZ:jO4[U^b8Y2
 R1
 R2
-w1519590994
+w1520261444
 8sm_tx.v
 Fsm_tx.v
 L0 3
@@ -228,13 +228,13 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vuart_rx
-R8
+R0
 !i10b 1
 !s100 zb`nIc5`GWXd;^GmSlfkd3
 I;4emD33NV6FUaL:@^4kNJ2
@@ -248,9 +248,9 @@ R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+R4
+R5
+R6
 !i113 1
 R7
 vuart_tx
@@ -274,13 +274,13 @@ R6
 !i113 1
 R7
 vuart_tx_tb
-!s110 1519928646
+R0
 !i10b 1
 !s100 F^`1U<z>@=KH6BT6<QH722
 IKnZX:O`i=eNzGM[M:zL_z2
 R1
 R2
-w1519928636
+w1520262049
 8uart_tx_tb.v
 Fuart_tx_tb.v
 L0 3

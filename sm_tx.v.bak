@@ -35,7 +35,12 @@ begin
 		begin
 			nxt_state = idle;
 		end
-	
+	synch:  begin
+		{txd_done,clr,inc}={1'b0,1'b1,1'b0};
+		{start,shftTSR,loadTSR}={1'b1,1'b0,1'b0};
+		//start = 1'b1;
+		nxt_state = tdata;
+		end
 	tdata:  if(bct == (data_bits+1))
 		begin
 			{txd_done,clr,inc}={1'b1,1'b1,1'b0};
@@ -49,12 +54,6 @@ begin
 			{start,shftTSR,loadTSR}={1'b0,1'b1,1'b0};
 			//{shftTSR,inc}={1'b1,1'b1};
 			nxt_state = tdata;
-		end
-	synch:  begin
-		{txd_done,clr,inc}={1'b0,1'b1,1'b0};
-		{start,shftTSR,loadTSR}={1'b1,1'b0,1'b0};
-		//start = 1'b1;
-		nxt_state = tdata;
 		end
 	endcase
 end
