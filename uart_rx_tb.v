@@ -1,0 +1,36 @@
+// Testbench for UART Receiver module
+
+module uart_rx_tb #(parameter data_bits=8, parameter received_bit_counter_bits=3, parameter bit_cell_counter_bits=4, parameter br=3'b000);
+reg rxd,sysclk,rst_n;
+wire [data_bits-1:0]RDR;
+wire rxd_readyH;
+
+uart_rx #(.data_bits(data_bits), .received_bit_counter_bits(received_bit_counter_bits), .bit_cell_counter_bits(bit_cell_counter_bits), .br(br)) RX (.*);
+
+initial
+sysclk=1'b0;
+
+always
+#222.65 sysclk=~sysclk;
+
+initial
+begin
+	rst_n = 0;
+	#1 rst_n = 1;
+	rxd = 1'b1;
+	#1 rxd = 1'b0;
+	#1 rxd = 1'b1;
+	#1 rxd = 1'b1;
+	#1 rxd = 1'b0;
+	#1 rxd = 1'b0;
+	#1 rxd = 1'b1;
+	#1 rxd = 1'b0;
+	#1 rxd = 1'b1;
+	#1 rxd = 1'b1;
+	#1 rxd = 1'b1;
+end	
+
+initial 
+#183000.3 $stop;
+
+endmodule

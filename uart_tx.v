@@ -12,7 +12,7 @@ module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4
  wire txd_done,bclk_dlayed;
  wire bclk_rising;
 
-  BRG #(.sel(br)) baud_rate_generator (.fclk(sysclk),.bclkx8(),.bclk(bclk));
+ BRG #(.sel(br)) baud_rate_generator (.fclk(sysclk),.bclkx8(),.bclk(bclk));
 
  dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclk),.q(bclk_dlayed));
  

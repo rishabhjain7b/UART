@@ -1,6 +1,6 @@
 // State Machine for Transmitter Module of UART
 
-module sm_tx #(parameter data_bits=8)
+module sm_tx #(parameter data_bits=4'd8)
 (input bclk,rst_n,txd_startH,
  input [3:0]bct,
  output reg txd_done,start,shftTSR,loadTSR,clr,inc);
@@ -37,23 +37,31 @@ begin
 		end
 	synch:  begin
 		{txd_done,clr,inc}={1'b0,1'b1,1'b0};
-		{start,shftTSR,loadTSR}={1'b1,1'b0,1'b0};
+		{start,shftTSR,loadTSR}={1'b1,1'b0,1'b1};
 		//start = 1'b1;
 		nxt_state = tdata;
 		end
-	tdata:  if(bct == (data_bits+1))
+	tdata:  if(bct != (data_bits+1))
 		begin
-			{txd_done,clr,inc}={1'b1,1'b1,1'b0};
+			/*{txd_done,clr,inc}={1'b1,1'b1,1'b0};
 			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b0};
 			//{txd_done,clr} = {1'b1,1'b1};
-			nxt_state = idle;
+			nxt_state = idle;*/
+			{txd_done,clr,inc}={1'b0,1'b0,1'b1};
+			{start,shftTSR,loadTSR}={1'b0,1'b1,1'b1};
+			//{shftTSR,inc}={1'b1,1'b1};
+			nxt_state = tdata;
 		end
 		else
 		begin
-			{txd_done,clr,inc}={1'b0,1'b0,1'b1};
+			/*{txd_done,clr,inc}={1'b0,1'b0,1'b1};
 			{start,shftTSR,loadTSR}={1'b0,1'b1,1'b0};
 			//{shftTSR,inc}={1'b1,1'b1};
-			nxt_state = tdata;
+			nxt_state = tdata;*/
+			{txd_done,clr,inc}={1'b1,1'b1,1'b0};
+			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b1};
+			//{txd_done,clr} = {1'b1,1'b1};
+			nxt_state = idle;
 		end
 	endcase
 end

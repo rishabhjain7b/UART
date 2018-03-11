@@ -19,7 +19,7 @@ begin
 	#5 rst_n = 1;
 	DBUS = 1010_0101;
 	#5  txd_startH=1;
-	//#25  txd_startH=0;
+	//#1  txd_startH=0;
 end	
 
 initial 
