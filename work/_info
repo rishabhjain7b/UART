@@ -9,7 +9,7 @@ z2
 cModel Technology
 dR:/intelFPGA/16.1/Verilog/fork_join
 vBRG
-Z0 !s110 1520789646
+Z0 !s110 1520794160
 !i10b 1
 !s100 7^ahV7hU:z1lQL2b0?8<R0
 I6jX>mnXiQBGJS_DFBBhY53
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1520789644.000000
+Z4 !s108 1520794160.000000
 Z5 !s107 uart_tx_tb.v|uart_tx.v|uart_rx_tb.v|uart_rx.v|sm_tx.v|sm_rx.v|dff.v|counter_nbit.v|counter_8bit.v|SIPO.v|PISO.v|PIPO.v|BRG_tb.v|BRG.v|
 Z6 !s90 -reportprogress|300|BRG.v|BRG_tb.v|PIPO.v|PISO.v|SIPO.v|counter_8bit.v|counter_nbit.v|dff.v|sm_rx.v|sm_tx.v|uart_rx.v|uart_rx_tb.v|uart_tx.v|uart_tx_tb.v|
 !i113 1
@@ -73,11 +73,11 @@ R7
 vcounter_nbit
 R0
 !i10b 1
-!s100 LGMH@IoiA2`ZhQ6LCR6Yl1
-I8I9d]<Hl_BIgoagHOi8IZ2
+!s100 C<5;^V7VX^WA0LXEbWPiM2
+IF:@hWM2ZdeFEcPEomCJcA1
 R1
 R2
-w1519545260
+w1520793718
 8counter_nbit.v
 Fcounter_nbit.v
 L0 3
@@ -216,11 +216,11 @@ R7
 vsm_tx
 R0
 !i10b 1
-!s100 Y<QzW;_QVEWAjldB79ZNl3
-ITK17ReNVQHLX[^^fWK_GA1
+!s100 Y=E?hPi^]JBkK_dGRmCNY3
+IJ9PO@c:1HMLfW0XZQR4281
 R1
 R2
-w1520789636
+w1520794157
 8sm_tx.v
 Fsm_tx.v
 L0 3
@@ -234,7 +234,7 @@ R6
 !i113 1
 R7
 vuart_rx
-R0
+Z8 !s110 1520794161
 !i10b 1
 !s100 =C?84n8KM6JRfnP0?ili03
 IDY8:NW6VC7j1N<H@Q2OaR0
@@ -254,7 +254,7 @@ R6
 !i113 1
 R7
 vuart_rx_tb
-R0
+R8
 !i10b 1
 !s100 2KaIz:>g0l9Zhz2QQ4Ga>3
 IMA]1RRFlYKJ@44Kd1c]AF1
@@ -274,7 +274,7 @@ R6
 !i113 1
 R7
 vuart_tx
-R0
+R8
 !i10b 1
 !s100 K9ZHdShXIhlZOz<^RMX]l2
 I_FnJ^k1;P@@^PX8D<[eOj0
@@ -294,13 +294,13 @@ R6
 !i113 1
 R7
 vuart_tx_tb
-R0
+R8
 !i10b 1
 !s100 F^`1U<z>@=KH6BT6<QH722
 IKnZX:O`i=eNzGM[M:zL_z2
 R1
 R2
-w1520789555
+w1520791090
 8uart_tx_tb.v
 Fuart_tx_tb.v
 L0 3

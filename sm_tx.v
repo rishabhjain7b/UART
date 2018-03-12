@@ -35,13 +35,16 @@ begin
 		begin
 			nxt_state <= idle;
 		end
-	synch:  begin
+	synch:  if (bclk)
+		begin
 		{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
 		{start,shftTSR,loadTSR}<={1'b1,1'b0,1'b1};
 		//start = 1'b1;
 		nxt_state <= tdata;
 		end
-	tdata:  if(bct != (data_bits+1))
+	tdata:  if (bclk)
+		begin
+		if(bct != (data_bits+1))
 		begin
 			/*{txd_done,clr,inc}={1'b1,1'b1,1'b0};
 			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b0};
@@ -62,6 +65,7 @@ begin
 			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b1};
 			//{txd_done,clr} = {1'b1,1'b1};
 			nxt_state <= idle;
+		end
 		end
 	endcase
 end
