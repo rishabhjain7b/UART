@@ -33,39 +33,48 @@ begin
 		end
 		else
 		begin
+			{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
+			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b0};
+			//loadTSR = 1'b0;
 			nxt_state <= idle;
 		end
-	synch:  if (posedge bclk)
-		begin
+	synch:  begin
 		{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
-		{start,shftTSR,loadTSR}<={1'b1,1'b0,1'b1};
+		{start,shftTSR,loadTSR}<={1'b1,1'b0,1'b0};
 		//start = 1'b1;
 		nxt_state <= tdata;
 		end
-	tdata:  if (posedge bclk)
+	tdata:  if(bct != (data_bits+1))
 		begin
-		if(bct != (data_bits+1))
-		begin
-			/*{txd_done,clr,inc}={1'b1,1'b1,1'b0};
-			{start,shftTSR,loadTSR}={1'b0,1'b0,1'b0};
-			//{txd_done,clr} = {1'b1,1'b1};
-			nxt_state = idle;*/
 			{txd_done,clr,inc}<={1'b0,1'b0,1'b1};
-			{start,shftTSR,loadTSR}<={1'b0,1'b1,1'b1};
+			{start,shftTSR,loadTSR}<={1'b0,1'b1,1'b0};
 			//{shftTSR,inc}={1'b1,1'b1};
 			nxt_state <= tdata;
 		end
 		else
 		begin
-			/*{txd_done,clr,inc}={1'b0,1'b0,1'b1};
-			{start,shftTSR,loadTSR}={1'b0,1'b1,1'b0};
-			//{shftTSR,inc}={1'b1,1'b1};
-			nxt_state = tdata;*/
 			{txd_done,clr,inc}<={1'b1,1'b1,1'b0};
-			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b1};
+			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b0};
 			//{txd_done,clr} = {1'b1,1'b1};
 			nxt_state <= idle;
 		end
+	endcase
+end
+
+always @ (negedge bclk)
+begin
+	case(pr_state)
+	synch:  begin
+		{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
+		{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b0};
+		//start = 1'b0;
+
+		end
+	tdata:  begin
+			{txd_done,clr,inc}<={1'b0,1'b0,1'b0};
+			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b0};
+			//{shftTSR,inc}={1'b1,1'b1};
+			nxt_state <= tdata;
 		end
 	endcase
 end

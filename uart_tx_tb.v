@@ -23,6 +23,6 @@ begin
 end	
 
 initial 
-#183000.3 $stop;
+#320300.3 $stop;
 
 endmodule

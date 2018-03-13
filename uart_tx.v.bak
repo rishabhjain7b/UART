@@ -12,13 +12,13 @@ module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4
  wire txd_done,bclk_dlayed;
  wire bclk_rising;
 
-  BRG #(.sel(br)) baud_rate_generator (.fclk(sysclk),.bclkx8(),.bclk(bclk));
+ BRG #(.sel(br)) baud_rate_generator (.fclk(sysclk),.bclkx8(),.bclk(bclk));
 
- //dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclk),.q(bclk_dlayed));
+ dff DFF1 (.clk(sysclk),.rst_n(rst_n),.in(bclk),.q(bclk_dlayed));
  
- //and and_gate (bclk_rising,bclk,~(bclk_dlayed));
+ and and_gate (bclk_rising,bclk,~(bclk_dlayed));
  
- sm_tx #(.data_bits(data_bits)) state_machine (.bclk(bclk),.rst_n(rst_n),.txd_startH(txd_startH),.bct(bct),
+ sm_tx #(.data_bits(data_bits)) state_machine (.bclk(bclk_rising),.rst_n(rst_n),.txd_startH(txd_startH),.bct(bct),
  						.txd_done(txd_done),.start(start),.shftTSR(shftTSR),.loadTSR(loadTSR),
 						.clr(clr),.inc(inc));
 

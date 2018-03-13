@@ -24,7 +24,7 @@ module uart_tx #(parameter data_bits=8, parameter transmitted_bit_counter_bits=4
 
  counter_nbit #(.n(transmitted_bit_counter_bits)) transmitted_bit_counter (.clk(sysclk),.clear(clr),.inc(inc),.out(bct));
 
- PISO #(.piso_width(data_bits)) data_shift_register (.clk(sysclk),.shift(shftTSR),.start(start),.load(loadTSR),.in(DBUS),.out(TSR));
+ PISO #(.piso_width(data_bits)) data_shift_register (.clk(sysclk),.shift(shftTSR),.start(start),.load(loadTSR),.in(DBUS),.out(txd));
 
  dff DFF2 (.clk(sysclk),.rst_n(rst_n),.in(txd_done),.q(txd_doneH));
 
