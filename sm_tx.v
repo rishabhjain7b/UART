@@ -24,7 +24,7 @@ end
 always @ (posedge bclk)
 begin
 	case(pr_state)
-	idle:   if(txd_startH)
+	idle:   if(txd_startH == 1'b1)
 		begin
 			{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
 			{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b1};
@@ -40,8 +40,8 @@ begin
 		end
 	synch:  begin
 		{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
-		{start,shftTSR,loadTSR}<={1'b1,1'b0,1'b0};
-		//start = 1'b1;
+		{shftTSR,loadTSR}<={1'b0,1'b0};
+		start <= 1'b1;
 		nxt_state <= tdata;
 		end
 	tdata:  if(bct != (data_bits+1))

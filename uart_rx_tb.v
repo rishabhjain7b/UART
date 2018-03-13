@@ -17,20 +17,20 @@ initial
 begin
 	rst_n = 0;
 	#1 rst_n = 1;
-	rxd = 1'b1;
-	#1 rxd = 1'b0;
-	#1 rxd = 1'b1;
-	#1 rxd = 1'b1;
-	#1 rxd = 1'b0;
-	#1 rxd = 1'b0;
-	#1 rxd = 1'b1;
-	#1 rxd = 1'b0;
-	#1 rxd = 1'b1;
-	#1 rxd = 1'b1;
-	#1 rxd = 1'b1;
+	rxd = 1'b0;
+	#20000 rxd = 1'b0;
+	#20000 rxd = 1'b1;
+	#20000 rxd = 1'b1;
+	#20000 rxd = 1'b0;
+	#20000 rxd = 1'b0;
+	#20000 rxd = 1'b1;
+	#20000 rxd = 1'b0;
+	#20000 rxd = 1'b1;
+	#20000 rxd = 1'b1;
+	#20000 rxd = 1'b1;
 end	
 
 initial 
-#183000.3 $stop;
+#320300.3 $stop;
 
 endmodule

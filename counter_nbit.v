@@ -4,7 +4,7 @@ module counter_nbit #(parameter n=4)
 (input clk,clear,inc,
  output [n-1:0]out);
 
-reg [n-1:0]out_r;
+reg [n-1:0]out_r={n{1'b0}};
 
 assign out=out_r;
 

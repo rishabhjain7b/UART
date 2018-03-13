@@ -2,7 +2,8 @@
 
 module uart_rx #(parameter data_bits=8, parameter received_bit_counter_bits=3, parameter bit_cell_counter_bits=4, parameter br=3'b000)
 (input rxd,sysclk,rst_n,
- output RDR,rxd_readyH);
+ output [data_bits-1:0]RDR,
+ output rxd_readyH);
 
  wire bclkx8;
  wire [data_bits-1:0]RSR;

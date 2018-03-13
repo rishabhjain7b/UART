@@ -1,6 +1,6 @@
 // State Machine for Receiver Module of UART
 
-module sm_rx
+module sm_rx #(parameter data_bits=8)
 (input bclkx8,rst_n,rxd,
  input [2:0]ct1,
  input [3:0]ct2,
@@ -22,75 +22,108 @@ begin
 	pr_state <= nxt_state;
 end
 
-always @ (pr_state,rxd)
+always @ (posedge bclkx8)
 begin
 	case(pr_state)
-	idle:   if(rxd)
+	idle:   if(rxd == 1'b1)
 		begin
-			nxt_state = idle;
+			nxt_state <= idle;
+		end
+		else if (rxd == 1'b0)
+		begin
+			nxt_state <= start_detected;
 		end
 		else
 		begin
-			nxt_state = start_detected;
+			nxt_state <= idle;
 		end
-	start_detected: if(rxd)
+	start_detected: if(rxd == 1'b1)
 			begin
-				{ok_en,shftRSR,load_RDR}={1'b0,1'b0,1'b0};
-				{clr1,clr2,inc1,inc2}={1'b1,1'b1,1'b0,1'b0};
+				{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+				{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
 				//clr1 = 1'b1;
-				nxt_state = idle;
+				nxt_state <= idle;
 			end
 			else
 			begin
 				if(ct1==3'd3)
 				begin
-					{ok_en,shftRSR,load_RDR}={1'b0,1'b0,1'b0};
-					{clr1,clr2,inc1,inc2}={1'b1,1'b1,1'b0,1'b0};
+					{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+					{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
 					//clr1 = 1'b1;
-					nxt_state = recv_data;
+					nxt_state <= recv_data;
 				end
 				else
 				begin
-					{ok_en,shftRSR,load_RDR}={1'b0,1'b0,1'b0};
-					{clr1,clr2,inc1,inc2}={1'b0,1'b1,1'b1,1'b0};
+					{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+					{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b1,1'b0};
 					//inc1 = 1'b1;
-					nxt_state = start_detected;
+					nxt_state <= start_detected;
 				end
 			end
 	recv_data: if(!(ct1==3'd7))
 		   begin
-			{ok_en,shftRSR,load_RDR}={1'b0,1'b0,1'b0};
-			{clr1,clr2,inc1,inc2}={1'b0,1'b1,1'b1,1'b0};
+			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b1,1'b0};
 			//inc1 = 1'b1;
-			nxt_state = recv_data;
+			nxt_state <= recv_data;
 		   end
 		   else
 		   begin
-			if(!(ct2==4'd8))
+			if(!(ct2==data_bits))
 			begin
-				{ok_en,shftRSR,load_RDR}={1'b0,1'b1,1'b0};
-				{clr1,clr2,inc1,inc2}={1'b1,1'b0,1'b0,1'b1};
+				{ok_en,shftRSR,load_RDR}<={1'b0,1'b1,1'b0};
+				{clr1,clr2,inc1,inc2}<={1'b1,1'b0,1'b0,1'b1};
 				//{shftRSR,inc2,clr1} = {1'b1,1'b1,1'b1};
-				nxt_state = recv_data;
+				nxt_state <= recv_data;
 			end
 			else
 			begin
-				if(rxd)
+				if(rxd == 1'b1)
 				begin
-					{ok_en,shftRSR,load_RDR}={1'b1,1'b0,1'b1};
-					{clr1,clr2,inc1,inc2}={1'b1,1'b1,1'b0,1'b0};
+					{ok_en,shftRSR,load_RDR}<={1'b1,1'b0,1'b1};
+					{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
 					//{load_RDR,ok_en,clr1,clr2}={1'b1,1'b1,1'b1,1'b1};
-					nxt_state = idle;
+					nxt_state <= idle;
 				end
 				else
 				begin
-					{ok_en,shftRSR,load_RDR}={1'b0,1'b0,1'b0};
-					{clr1,clr2,inc1,inc2}={1'b1,1'b1,1'b0,1'b0};
+					{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+					{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
 					//{clr1,clr2}={1'b1,1'b1};
-					nxt_state = idle;
+					nxt_state <= idle;
 				end
 			end
 		   end
 	endcase
 end
+
+always @ (negedge bclkx8)
+begin
+	case(pr_state)
+	start_detected: begin
+				{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+				{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b0,1'b0};
+				//clr1 = 1'b0;
+			end
+	recv_data:  if(!(ct1==3'd7))
+		    begin
+			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b0,1'b0};
+		    end
+		    else if(!(ct2==data_bits))
+		    begin
+			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b1,1'b0,1'b0,1'b0};
+			//{shftRSR,inc2,clr1} = {1'b1,1'b1,1'b1};
+		    end
+		    else
+		    begin
+			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
+			//{load_RDR,ok_en,clr1,clr2}={1'b1,1'b1,1'b1,1'b1};
+		    end
+	endcase
+end
+
 endmodule

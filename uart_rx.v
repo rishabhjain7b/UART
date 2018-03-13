@@ -30,7 +30,7 @@ module uart_rx #(parameter data_bits=8, parameter received_bit_counter_bits=3, p
 
  SIPO #(.sipo_width(data_bits)) data_shift_register (.clk(sysclk),.shift(shftRSR),.in(rxd),.out(RSR));
  
- PIPO #(.pipo_width(data_bits)) received_data_loader (.clk(sysclk),.load(load_RSR),.in(RSR),.out(RDR));
+ PIPO #(.pipo_width(data_bits)) received_data_loader (.clk(sysclk),.load(load_RDR),.in(RSR),.out(RDR));
 
  dff DFF2 (.clk(sysclk),.rst_n(rst_n),.in(ok_en),.q(rxd_readyH));
 
