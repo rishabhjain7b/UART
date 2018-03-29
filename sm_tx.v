@@ -68,6 +68,7 @@ begin
 		{txd_done,clr,inc}<={1'b0,1'b1,1'b0};
 		{start,shftTSR,loadTSR}<={1'b0,1'b0,1'b0};
 		//start = 1'b0;
+		nxt_state <= tdata;
 		end
 	tdata:  begin
 			{txd_done,clr,inc}<={1'b0,1'b0,1'b0};

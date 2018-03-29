@@ -19,7 +19,7 @@ module PISO #(parameter piso_width=9)
 	else if (shift)
 	begin
 	out_r <= in_r[0];
-	in_r <= {1'b0,in_r[piso_width-1:1]};
+	in_r <= {1'b1,in_r[piso_width-1:1]};
 	end
 	else
 	out_r <= out_r;

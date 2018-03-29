@@ -12,10 +12,10 @@ module PISO #(parameter piso_width=9)
 
  always @ (posedge clk)
  begin
-	if (start)
-	out_r <= 1'b0; 
-	else if (load)
+	if (load)
 	in_r <= in;
+	else if (start)
+	out_r <= 1'b0; 
 	else if (shift)
 	begin
 	out_r <= in_r[0];

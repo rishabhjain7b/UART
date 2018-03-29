@@ -22,7 +22,7 @@ initial
 begin
 	rst_n = 0;
 	#5 rst_n = 1;
-	DBUS = 1010_0101;
+	DBUS = 11111101;
 	#5  txd_startH=1;
 	//#1  txd_startH=0;
 end	

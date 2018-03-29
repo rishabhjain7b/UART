@@ -60,7 +60,7 @@ begin
 	recv_data: if(!(ct1==3'd7))
 		   begin
 			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
-			{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b1,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b0,1'b0,1'b1,1'b0};
 			//inc1 = 1'b1;
 			nxt_state <= recv_data;
 		   end
@@ -105,19 +105,22 @@ begin
 	recv_data:  if(!(ct1==3'd7))
 		    begin
 			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
-			{clr1,clr2,inc1,inc2}<={1'b0,1'b1,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b0,1'b0,1'b0,1'b0};
+			nxt_state <= recv_data;
 		    end
 		    else if(!(ct2==data_bits))
 		    begin
 			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
-			{clr1,clr2,inc1,inc2}<={1'b1,1'b0,1'b0,1'b0};
+			{clr1,clr2,inc1,inc2}<={1'b0,1'b0,1'b0,1'b0};
 			//{shftRSR,inc2,clr1} = {1'b1,1'b1,1'b1};
+			nxt_state <= recv_data;
 		    end
 		    else
 		    begin
-			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b0};
+			{ok_en,shftRSR,load_RDR}<={1'b0,1'b0,1'b1};
 			{clr1,clr2,inc1,inc2}<={1'b1,1'b1,1'b0,1'b0};
 			//{load_RDR,ok_en,clr1,clr2}={1'b1,1'b1,1'b1,1'b1};
+			nxt_state <= idle;
 		    end
 	endcase
 end
